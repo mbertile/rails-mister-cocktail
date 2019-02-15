@@ -1,6 +1,13 @@
-<h1>Let's shake it</h1>
-<% @cocktails.each do |cocktail| %>
-  <h2><%= cocktail.name %></h2>
-<% end %>
+<div style="background-image: url(<%= image_path 'cocktailhp.jpg' %>);">
 
-<%= link_to 'Add a new cocktail', new_cocktail_path %>
+  <h1>Let's shake it</h1>
+  <% @cocktails.each do |cocktail| %>
+    <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+    <%= link_to "delete", cocktail_path(cocktail.id),
+      method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+  <br>
+
+  <%= link_to 'Add a new cocktail', new_cocktail_path %>
+
+</div>
